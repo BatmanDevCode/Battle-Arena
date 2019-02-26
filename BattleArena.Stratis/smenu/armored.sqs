@@ -1,0 +1,62 @@
+_Unit=_this Select 0;
+_Upos= GetPos _Unit;
+_ux=_Upos Select 0;
+_uy=_Upos Select 1;
+_uz=_Upos Select 2;
+_rand1=0+random 19;
+_rn = (_rand1 + 0.5) - ((_rand1 + 0.5) Mod 1);
+
+?_rn == 0: _v1="B_G_Offroad_01_armed_F";
+?_rn == 1: _v1="B_MRAP_01_gmg_F";
+?_rn == 2: _v1="B_MRAP_01_hmg_F";
+?_rn == 3: _v1="I_MRAP_03_F";
+?_rn == 4: _v1="I_MRAP_03_gmg_F";
+?_rn == 5: _v1="I_MRAP_03_hmg_F";
+?_rn == 6: _v1="O_MRAP_02_gmg_F";
+?_rn == 7: _v1="O_MRAP_02_hmg_F";
+?_rn == 8: _v1="B_APC_Tracked_01_AA_F";
+?_rn == 9: _v1="B_APC_Tracked_01_rcws_F";
+?_rn == 10: _v1="B_APC_Wheeled_01_cannon_F";
+?_rn == 11: _v1="B_MBT_01_arty_F";
+?_rn == 12: _v1="B_MBT_01_cannon_F";
+?_rn == 13: _v1="B_MBT_01_mlrs_F";
+?_rn == 14: _v1="I_APC_Wheeled_03_cannon_F";
+?_rn == 15: _v1="O_APC_Tracked_02_AA_F";
+?_rn == 16: _v1="O_APC_Tracked_02_cannon_F";
+?_rn == 17: _v1="O_APC_Wheeled_02_rcws_F";
+?_rn == 18: _v1="O_MBT_02_arty_F";
+?_rn == 19: _v1="O_MBT_02_cannon_F";
+
+
+
+
+_Heli=_v1 CreateVehicle _Upos;
+_Heli SetDir Getdir _Unit;
+_Unit MoveInDriver _Heli;
+_Heli engineOn true;
+_Heli Lock FALSE;
+
+
+
+_Unit RemoveAction tank;
+_Unit RemoveAction choppa;
+_Unit RemoveAction plane;
+_Unit RemoveAction boat;
+
+
+#loop
+
+~2
+if (count crew _Heli<= 0) then {goto "timer"}
+~2
+
+goto "loop"
+
+#timer
+~30
+if (count crew _Heli>= 1) then {goto "loop"}
+~1
+
+Vmenu = _Unit AddAction [("<t color='#FF9900'>" + "VehicleMenu" + "</t>"), "smenu\createveh.sqf",[],-95,false,false,"","player ==_target"];
+
+exit;

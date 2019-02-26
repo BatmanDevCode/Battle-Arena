@@ -1,0 +1,29 @@
+_Unit=_this Select 0;
+_dir = getDir _unit;
+_position = getPosASL _unit;
+_rand1=0+random 2;
+_rn = (_rand1 + 0.5) - ((_rand1 + 0.5) Mod 1);
+?_rn == 0: _v1="B_HMG_01_high_F";
+?_rn == 1: _v1="O_static_AA_F";
+?_rn == 2: _v1="B_Mortar_01_F";
+
+
+_Heli=_v1 createVehicle _position;
+_heli setPosASL _position;
+_heli setDir _dir;
+_Heli Lock FALSE;
+
+?_v1 == "B_Mortar_01_F":_Heli setPos (player modelToWorld [0,2,0]);
+?_v1 == "B_HMG_01_high_F":_Heli setPos (player modelToWorld [0,2,0]); _Heli addweapon "GMG_20mm"; _Heli addmagazine "40Rnd_20mm_g_belt";
+?_v1 == "O_static_AA_F":_Heli setPos (player modelToWorld [0,2,0]); _Heli removeweapon "missiles_titan_static"; _Heli addweapon "Rocket_04_AP_Plane_CAS_01_F"; _Heli addmagazine "7Rnd_Rocket_04_AP_F";_Heli addweapon "missiles_ASRAAM"; _Heli addmagazine "2Rnd_AAA_missiles"; _Heli addweapon "missiles_SCALPEL"; _Heli addmagazine "2Rnd_LG_scalpel";
+
+_Unit RemoveAction uav;
+_Unit RemoveAction static;
+_Unit RemoveAction virtual;
+_Unit RemoveAction arsenal;
+WeapM = _unit addAction [("<t color='#ff0000'>" + "WeaponsMenu" + "</t>"), "smenu\Weaponmenu.sqf",[],-96,false,false,"","player ==_target"];
+
+
+
+
+exit;

@@ -1,0 +1,58 @@
+
+
+
+
+_array = nukestartpos nearObjects ["Man", 150]
+{_x setdammage ((getdammage _x) + 1.0)} forEach _array
+
+
+_array = nukestartpos nearObjects ["Ship", 150]
+{_x setdammage ((getdammage _x) + 1.0)} forEach _array
+
+
+_array = nukestartpos nearObjects ["Car", 150]
+{_x setdammage ((getdammage _x) + 1.0)} forEach _array
+
+_array = nukestartpos nearObjects ["Air", 150]
+{_x setdammage ((getdammage _x) + 1.0)} forEach _array
+
+~5
+
+_array = nukestartpos nearObjects ["Man", 300]
+{_x setdammage ((getdammage _x) + 0.9)} forEach _array
+
+
+_array = nukestartpos nearObjects ["Ship", 300]
+{_x setdammage ((getdammage _x) + 0.9)} forEach _array
+
+
+_array = nukestartpos nearObjects ["Car", 300]
+{_x setdammage ((getdammage _x) + 0.9)} forEach _array
+
+_array = nukestartpos nearObjects ["Air", 300]
+{_x setdammage ((getdammage _x) + 0.9)} forEach _array
+
+
+~5
+
+_array = nukestartpos nearObjects ["Man", 500]
+{_x setdammage ((getdammage _x) + 0.8)} forEach _array
+
+
+_array = nukestartpos nearObjects ["Ship", 500]
+{_x setdammage ((getdammage _x) + 0.8)} forEach _array
+
+
+_array = nukestartpos nearObjects ["Car", 500]
+{_x setdammage ((getdammage _x) + 0.8)} forEach _array
+
+_array = nukestartpos nearObjects ["Air", 500]
+{_x setdammage ((getdammage _x) + 0.8)} forEach _array
+
+
+
+radarea = "Land_HelipadEmpty_F" createVehicle (position nukestartpos);
+[] exec "snuke\radzone.sqs"
+
+exit
+

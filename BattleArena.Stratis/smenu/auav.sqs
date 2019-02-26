@@ -1,0 +1,34 @@
+_Unit=_this Select 0;
+_dir = getDir _unit;
+_position = getPosASL _unit;
+
+_rand1=0+random 1;
+_rn = (_rand1 + 0.5) - ((_rand1 + 0.5) Mod 1);
+?_rn == 0: _v1="B_UAV_01_F";
+?_rn == 1: _v1="B_UAV_01_F";
+
+
+_Heli= _v1 createVehicle _position;
+_heli setPosASL _position;
+_heli setDir _dir;
+_Heli Lock FALSE;
+createVehicleCrew _Heli;
+
+?_v1 == "B_UAV_01_F":_Heli setPos (player modelToWorld [0,2,0]); _Heli setFuel 0.3;_Heli addweapon "LMG_Minigun"; _Heli addmagazine "200Rnd_65x39_Belt_Tracer_Red";_Heli addmagazine "200Rnd_65x39_Belt_Tracer_Red";
+
+
+
+_Unit RemoveAction uav;
+_Unit RemoveAction static;
+_Unit RemoveAction virtual;
+_Unit RemoveAction arsenal;
+WeapM = _unit addAction [("<t color='#ff0000'>" + "WeaponsMenu" + "</t>"), "smenu\Weaponmenu.sqf",[],-96,false,false,"","player ==_target"];
+
+hint"UAV will delete in 5 minutes"
+~300
+_Heli setdamage 1;
+~20
+deletevehicle _Heli;
+
+
+exit;

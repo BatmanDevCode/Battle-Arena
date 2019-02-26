@@ -1,0 +1,21 @@
+copyToClipboard format ["%1 ", str _this];
+_veh = _this select 0;
+_Bombtype = _this select 1;
+_nuke = _this select 2;
+
+
+BOMB1 = "Land_WaterBarrel_F" createvehicle (getpos _veh);
+
+BOMB1 ATTACHTO [_veh,[0,0,-5.4]];
+BOMB1 setvectorup [0.001,1,0.001];
+
+dropclus = [_veh] exec "scripts\NukeDrop.sqs";
+
+
+_veh removeAction _nuke;
+
+
+
+#end;
+exit;
+

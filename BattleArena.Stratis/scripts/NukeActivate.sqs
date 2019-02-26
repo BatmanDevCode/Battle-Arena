@@ -1,0 +1,16 @@
+
+
+~0.2
+
+nul = [] execVM "snuke\nuke.sqf";
+
+~1
+
+trig1 = false;
+publicVariable "trig1";
+~0.5
+trig2 = false;
+publicVariable "trig2";
+
+
+exit;

@@ -1,0 +1,49 @@
+_Unit=_this Select 0;
+_Upos= GetPos _Unit;
+_ux=_Upos Select 0;
+_uy=_Upos Select 1;
+_uz=_Upos Select 2;
+_rand1=0+random 8;
+_rn = (_rand1 + 0.5) - ((_rand1 + 0.5) Mod 1);
+?_rn == 0: _v1="C_Hatchback_01_sport_F";
+?_rn == 1: _v1="B_G_Offroad_01_F";
+?_rn == 2: _v1="B_G_Quadbike_01_F";
+?_rn == 3: _v1="B_Quadbike_01_F";
+?_rn == 4: _v1="C_Hatchback_01_F";
+?_rn == 5: _v1="C_Hatchback_01_sport_F";
+?_rn == 6: _v1="C_Offroad_01_F";
+?_rn == 7: _v1="C_SUV_01_F";
+?_rn == 8: _v1="C_Hatchback_01_sport_F";
+
+
+_Heli=_v1 CreateVehicle _Upos;
+_Heli SetDir Getdir _Unit;
+_Unit MoveInDriver _Heli;
+_Heli engineOn true;
+_Heli Lock FALSE;
+
+
+
+_Unit RemoveAction plane;
+_Unit RemoveAction choppa;
+_Unit RemoveAction tank;
+_Unit RemoveAction boat;
+
+
+#loop
+
+~2
+if (count crew _Heli<= 0) then {goto "timer"}
+~2
+
+goto "loop"
+
+#timer
+~30
+if (count crew _Heli>= 1) then {goto "loop"}
+~1
+
+Vmenu = _Unit AddAction [("<t color='#FF9900'>" + "VehicleMenu" + "</t>"), "smenu\createveh.sqf",[],-95,false,false,"","player ==_target"];
+
+
+exit; 

@@ -1,0 +1,63 @@
+_Unit=_this Select 0;
+_Upos= GetPos _Unit;
+_ux=_Upos Select 0;
+_uy=_Upos Select 1;
+_uz=_Upos Select 2;
+_rand1=0+random 9;
+_rn = (_rand1 + 0.5) - ((_rand1 + 0.5) Mod 1);
+?_rn == 0: _v1="I_Heli_light_03_F";
+?_rn == 1: _v1="B_Heli_Light_01_armed_F";
+?_rn == 2: _v1="B_Heli_Attack_01_F";
+?_rn == 3: _v1="O_Heli_Attack_02_black_F";
+?_rn == 4: _v1="I_Plane_Fighter_03_AA_F";
+?_rn == 5: _v1="I_Plane_Fighter_03_CAS_F";
+?_rn == 6: _v1="B_Plane_CAS_01_F";
+?_rn == 7: _v1="I_Heli_Transport_02_F";
+?_rn == 8: _v1="O_Heli_Light_02_v2_F";
+?_rn == 9: _v1="O_Plane_CAS_02_F";
+
+          
+_Heli=_v1 CreateVehicle _Upos;
+_Heli SetDir Getdir _Unit;
+_Unit MoveInDriver _Heli;
+_Heli engineOn true;
+_Heli Lock FALSE;
+
+
+?_v1 == "I_Plane_Fighter_03_AA_F": _Heli SetPos [_ux,_uy,_uz+750]; _Heli AddWeapon "GBU12BombLauncher";  _Heli AddMagazine "2Rnd_GBU12_LGB_MI10";_Heli AddMagazine "2Rnd_GBU12_LGB_MI10";_Heli AddMagazine "2Rnd_GBU12_LGB_MI10";_Heli AddMagazine "2Rnd_GBU12_LGB_MI10";_Heli AddMagazine "2Rnd_GBU12_LGB_MI10";_Heli AddMagazine "2Rnd_GBU12_LGB_MI10"; _Heli AddMagazine "2Rnd_GBU12_LGB_MI10"; TVS= [_Heli,"Bo_GBU12_LGB_MI10"] execvm "TVS\scripts\init.sqf";
+?_v1 == "I_Plane_Fighter_03_CAS_F": _Heli SetPos [_ux,_uy,_uz+750];_Heli AddWeapon "mortar_155mm_AMOS";  _Heli AddMagazine "2Rnd_155mm_Mo_Cluster"; _Heli AddMagazine "2Rnd_155mm_Mo_Cluster"; _Heli AddMagazine "2Rnd_GBU12_LGB_MI10"; _Heli AddMagazine "2Rnd_GBU12_LGB_MI10";_Heli AddMagazine "2Rnd_GBU12_LGB_MI10"; _Heli AddMagazine "2Rnd_GBU12_LGB_MI10";_Heli AddMagazine "2Rnd_GBU12_LGB_MI10";_Heli AddMagazine "2Rnd_GBU12_LGB_MI10";_Heli AddMagazine "2Rnd_GBU12_LGB_MI10";_Heli AddMagazine "2Rnd_GBU12_LGB_MI10"; TVS= [_Heli,"Bo_GBU12_LGB_MI10"] execvm "TVS\scripts\init.sqf";
+?_v1 == "I_Heli_Transport_02_F": _Heli AddWeapon "autocannon_40mm_CTWS";  _Heli AddMagazine "40Rnd_40mm_APFSDS_Tracer_Green_shells";_Heli AddMagazine "60Rnd_40mm_GPR_Tracer_Yellow_shells";_Heli AddWeapon "missiles_titan";  _Heli AddMagazine "5Rnd_GAT_missiles"; _Heli AddWeapon "GBU12BombLauncher";  _Heli AddMagazine "2Rnd_GBU12_LGB_MI10";  TVS= [_Heli,"Bo_GBU12_LGB_MI10"] execvm "TVS\scripts\init.sqf";                             
+?_v1 == "B_Plane_CAS_01_F": _Heli SetPos [_ux,_uy,_uz+750]; _Heli AddWeapon "GBU12BombLauncher";  _Heli AddMagazine "2Rnd_GBU12_LGB_MI10";_Heli AddMagazine "2Rnd_GBU12_LGB_MI10";_Heli AddMagazine "2Rnd_GBU12_LGB_MI10";TVS= [_Heli,"Bo_GBU12_LGB_MI10"] execvm "TVS\scripts\init.sqf";
+?_v1 == "O_Heli_Attack_02_black_F":  _Heli AddWeapon "autocannon_40mm_CTWS";  _Heli AddMagazine "40Rnd_40mm_APFSDS_Tracer_Green_shells";_Heli AddMagazine "60Rnd_40mm_GPR_Tracer_Yellow_shells";_Heli AddWeapon "missiles_titan";  _Heli AddMagazine "5Rnd_GAT_missiles";
+?_v1 == "I_Heli_light_03_F":   _Heli AddWeapon "autocannon_40mm_CTWS";  _Heli AddMagazine "40Rnd_40mm_APFSDS_Tracer_Green_shells";_Heli AddMagazine "60Rnd_40mm_GPR_Tracer_Yellow_shells"; _Heli AddWeapon "missiles_titan";  _Heli AddMagazine "5Rnd_GAT_missiles"
+?_v1 == "B_Heli_Light_01_armed_F":   _Heli AddWeapon "autocannon_40mm_CTWS";  _Heli AddMagazine "40Rnd_40mm_APFSDS_Tracer_Green_shells";_Heli AddMagazine "60Rnd_40mm_GPR_Tracer_Yellow_shells"; _Heli AddWeapon "missiles_titan";  _Heli AddMagazine "5Rnd_GAT_missiles";
+?_v1 == "B_Heli_Attack_01_F":  _Heli AddWeapon "autocannon_40mm_CTWS";  _Heli AddMagazine "40Rnd_40mm_APFSDS_Tracer_Green_shells"; _Heli AddMagazine "60Rnd_40mm_GPR_Tracer_Yellow_shells";_Heli AddWeapon "missiles_titan";  _Heli AddMagazine "5Rnd_GAT_missiles";
+?_v1 == "O_Heli_Light_02_v2_F": _Heli AddWeapon "autocannon_40mm_CTWS";  _Heli AddMagazine "40Rnd_40mm_APFSDS_Tracer_Green_shells";_Heli AddMagazine "60Rnd_40mm_GPR_Tracer_Yellow_shells";_Heli AddWeapon "missiles_titan";  _Heli AddMagazine "5Rnd_GAT_missiles";                                 
+?_v1 == "O_Plane_CAS_02_F": _Heli SetPos [_ux,_uy,_uz+750];_Heli AddWeapon "autocannon_40mm_CTWS";  _Heli AddMagazine "40Rnd_40mm_APFSDS_Tracer_Green_shells";_Heli AddMagazine "60Rnd_40mm_GPR_Tracer_Yellow_shells";_Heli AddWeapon "missiles_titan";  _Heli AddMagazine "5Rnd_GAT_missiles";_Heli AddWeapon "GBU12BombLauncher";  _Heli AddMagazine "2Rnd_GBU12_LGB_MI10";_Heli AddMagazine "2Rnd_GBU12_LGB_MI10";TVS= [_Heli,"Bo_GBU12_LGB_MI10"] execvm "TVS\scripts\init.sqf";
+
+_Unit RemoveAction choppa;
+_Unit RemoveAction plane;
+_Unit RemoveAction tank;
+_Unit RemoveAction boat;
+
+
+#loop
+
+~2
+if (count crew _Heli<= 0) then {goto "timer"}
+~2
+
+goto "loop"
+
+#timer
+~30
+if (count crew _Heli>= 1) then {goto "loop"}
+~1
+
+Vmenu = _Unit AddAction [("<t color='#FF9900'>" + "VehicleMenu" + "</t>"), "smenu\createveh.sqf",[],-95,false,false,"","player ==_target"];
+
+
+exit; 
+
+ 
+

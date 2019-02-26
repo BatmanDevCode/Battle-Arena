@@ -1,0 +1,57 @@
+
+class Header
+{
+	gameType = DM; //game type
+	minPlayers = 1; //min # of players the mission supports
+	maxPlayers = 100; //max # of players the mission supports
+
+};
+
+author = "Schmoking & Batman";
+onLoadName = "Battle Arena";
+onLoadMission="KGServers Death Match";
+loadScreen = __EVAL(["\A3\Structures_F_Argo\Commercial\Billboards\Data\Advertisements\bill_action_co.paa","\A3\Structures_F_Argo\Commercial\Billboards\Data\Advertisements\bill_mars_co.paa","\A3\Structures_F_Argo\Commercial\Billboards\Data\Advertisements\bill_maskrtnik_co.paa","\A3\Structures_F_Argo\Commercial\Billboards\Data\Advertisements\bill_olives_co.paa","\A3\Structures_F_Argo\Commercial\Billboards\Data\Advertisements\bill_pate_co.paa","\A3\Structures_F_Argo\Commercial\Billboards\Data\Advertisements\bill_pills_co.paa","\A3\Structures_F_Argo\Commercial\Billboards\Data\Advertisements\bill_plane_co.paa","\A3\Structures_F_Argo\Commercial\Billboards\Data\Advertisements\bill_supermarket_co.paa","\A3\Structures_F_Argo\Commercial\Billboards\Data\Advertisements\bill_winery_co.paa"] select floor random 9);
+
+respawn = BASE;
+respawndelay = 10;
+disabledAI = true;
+
+#include "ATLAS\description.ext" //RscTitles In Here
+#include "TVS\Tvs.hpp"
+
+class RscTitles 
+{
+	#include "GF_Status_Bar\GF_Status_Bar_HPP.hpp"
+	#include "ATLAS\rSquadManagement\gui\notification.hpp"
+	#include "GF_Earplugs\GF_Earplugs_HPP.hpp"
+};
+
+//Sounds
+class CfgSounds
+{
+	sounds[] = {};
+	
+class nuke1s
+{
+	name = "nuke1s";
+	sound[] = {\Sound\nuke1s.ogg, db+5, 1.0};
+	titles[]= {}; 
+};	
+
+class radzoneb
+{
+	name = "radzoneb";
+	sound[] = {\Sound\radiation.ogg, db+5, 1.0};
+	titles[]= {}; 
+};
+
+
+class napalm
+{
+	name = "napalm";
+	sound[] = {"\sound\napalm.ogg", db+20, 1};
+	titles[] = {1, ""};
+};
+  
+};
+

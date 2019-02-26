@@ -1,0 +1,40 @@
+//generic base class and color lists
+#include "rGUI\defines.hpp"
+#include "rGUI\colors.hpp"
+
+
+//BASE GUI
+#include "rGUI_BASE\guiBase.hpp"
+//Squad Management
+#include "rSquadManagement\gui\squadGUI.hpp"
+#include "taw_vd\GUI.h"	
+#include "VAS\menu.hpp"
+#include "VVS\menu.h"
+#include "LT\LTmenu.hpp"
+
+
+/*class RscTitles 
+{
+	#include "GF_Status_Bar\GF_Status_Bar_HPP.hpp"
+	#include "rSquadManagement\gui\notification.hpp"
+	#include "GF_Earplugs\GF_Earplugs_HPP.hpp"
+};*/
+
+
+
+class CfgFunctions
+{
+	#include "VAS\cfgfunctions.hpp"
+	#include "VVS\Functions.h"
+	#include "taw_vd\CfgFunctions.hpp"
+	#include "LT\cfgfunctions.hpp"
+	
+	class ATLAS 
+	{		
+		#include "rSquadManagement\cfgFunctions.hpp"
+	};
+};
+
+
+
+

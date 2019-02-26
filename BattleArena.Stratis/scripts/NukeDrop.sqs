@@ -1,0 +1,35 @@
+
+_veh = _this select 0;
+
+_balt =10;
+ 
+DETACH bomb1;
+
+bomb1 setdamage 0;
+bomb1 setdir getdir nukebomber;
+_vector = velocity nukebomber;
+bomb1 setVelocity [((velocity vehicle nukebomber) select 0)/3, ((velocity vehicle nukebomber) select 1)/3,-5];
+bomb1 setVelocity [(sin (getDir bomb1))*70, (cos (getDir bomb1))*70, 1];
+
+
+#there
+_init = getpos bomb1;
+_height = _init select 2;
+if (_height >_balt) then {goto "there"}
+
+_nukepos = "Land_HelipadEmpty_F" createvehicle  ( getpos bomb1);
+_nukepos setVehicleVarName "nukestartpos";
+_nukepos Call Compile Format ["%1=_This ; PublicVariable ""%1""","nukestartpos"];
+~ 0.2
+deleteVehicle bomb1;
+trig1 = True;
+publicVariable "trig1";
+~ 0.5
+exit
+
+
+
+
+
+
+

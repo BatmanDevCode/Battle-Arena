@@ -1,0 +1,49 @@
+_Unit=_this Select 0;
+_Upos= GetPos _Unit;
+_ux=_Upos Select 0;
+_uy=_Upos Select 1;
+_uz=_Upos Select 2;
+_rand1=0+random 2;
+_rn = (_rand1 + 0.5) - ((_rand1 + 0.5) Mod 1);
+?_rn == 0: _v1="C_Boat_Civil_01_police_F";
+?_rn == 1: _v1="B_Boat_Armed_01_minigun_F";
+?_rn == 2: _v1="B_SDV_01_F";
+
+
+
+_Heli=_v1 CreateVehicle _Upos;
+_Heli SetDir Getdir _Unit;
+_Unit MoveInDriver _Heli;
+_Heli engineOn true
+_Heli Lock FALSE;
+                            
+                                
+
+_Unit RemoveAction choppa;
+_Unit RemoveAction plane;
+_Unit RemoveAction tank;
+_Unit RemoveAction boat;
+
+
+
+#loop
+
+~2
+if (count crew _Heli<= 0) then {goto "timer"}
+~2
+
+goto "loop"
+
+#timer
+
+~30
+if (count crew _Heli>= 1) then {goto "loop"}
+~1
+
+Vmenu = _Unit AddAction [("<t color='#00f700'>" + "VehicleMenu" + "</t>"), "smenu\createveh.sqf",[],-95,false,false,"","player ==_target"];
+
+
+exit; 
+
+ 
+
